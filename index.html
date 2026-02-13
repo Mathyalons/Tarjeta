@@ -26,7 +26,6 @@ body{
   100%{background-position:0% 50%;}
 }
 
-/* 🔥 ARREGLADO */
 .page{
   position:absolute;
   width:90%;
@@ -71,14 +70,6 @@ button{
   transform:scale(1.2);
 }
 
-.no{
-  background:black;
-  color:white;
-  position:absolute;
-  top:65%;
-  left:55%;
-}
-
 .love-text{
   font-size:3em;
   font-weight:bold;
@@ -88,6 +79,12 @@ button{
 @keyframes glow{
   from{transform:scale(1); text-shadow:0 0 10px white;}
   to{transform:scale(1.2); text-shadow:0 0 30px #fff;}
+}
+
+#countdown{
+  font-size:2em;
+  margin-top:20px;
+  font-weight:bold;
 }
 
 .hearts{
@@ -119,7 +116,6 @@ button{
   ¿Quieres ser mi Valentín?</h1>
   
   <button class="yes" onclick="nextPage(2)">Sí, obvio 😘</button>
-  <button class="no" onclick="moverBoton(this)">No 😅</button>
 </div>
 
 <!-- Página 2 -->
@@ -146,6 +142,8 @@ button{
   Prepárate… porque voy decidido 🔥<br><br>
   Y no pienso soltarte nunca. 💍
   </h1>
+
+  <div id="countdown"></div>
 </div>
 
 <script>
@@ -161,14 +159,8 @@ function nextPage(num){
 
   if(num===3){
     explosionCorazones();
+    iniciarCuentaRegresiva();
   }
-}
-
-function moverBoton(btn){
-  const x=Math.random()*(window.innerWidth-120);
-  const y=Math.random()*(window.innerHeight-60);
-  btn.style.left=x+"px";
-  btn.style.top=y+"px";
 }
 
 function createHearts(){
@@ -197,11 +189,38 @@ function explosionCorazones(){
   }
 }
 
+function iniciarCuentaRegresiva(){
+  const countdown=document.getElementById("countdown");
+
+  function actualizar(){
+    const ahora=new Date();
+    const objetivo=new Date();
+    objetivo.setHours(20,0,0,0);
+
+    if(ahora>objetivo){
+      countdown.innerHTML="Ya es hora 💞";
+      return;
+    }
+
+    const diferencia=objetivo-ahora;
+
+    const horas=Math.floor(diferencia/(1000*60*60));
+    const minutos=Math.floor((diferencia%(1000*60*60))/(1000*60));
+    const segundos=Math.floor((diferencia%(1000*60))/1000);
+
+    countdown.innerHTML=`Faltan ${horas}h ${minutos}m ${segundos}s ❤️`;
+  }
+
+  actualizar();
+  setInterval(actualizar,1000);
+}
+
 createHearts();
 </script>
 
 </body>
 </html>
+
 
 
 
