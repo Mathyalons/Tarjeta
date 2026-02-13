@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Fernanda ❤️</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ff0844,#ff5e9c);
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+  text-align:center;
+}
+
+.page{
+  position:absolute;
+  width:90%;
+  max-width:650px;
+  opacity:0;
+  transform:scale(0.7);
+  transition:all 0.8s ease;
+}
+
+.active{
+  opacity:1;
+  transform:scale(1);
+}
+
+h1{
+  font-size:2.5em;
+}
+
+button{
+  margin:15px;
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.yes{
+  background:white;
+  color:#ff0844;
+}
+
+.yes:hover{
+  transform:scale(1.2);
+}
+
+.no{
+  background:black;
+  color:white;
+  position:absolute;
+}
+
+.love-text{
+  font-size:3.2em;
+  font-weight:bold;
+  animation:glow 1s infinite alternate;
+}
+
+@keyframes glow{
+  from{transform:scale(1); text-shadow:0 0 10px white;}
+  to{transform:scale(1.2); text-shadow:0 0 30px #fff;}
+}
+
+.hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.heart{
+  position:absolute;
+  font-size:20px;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh);}
+  to{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música (puedes cambiar el link por otra mp3 pública si quieres) -->
+<audio autoplay loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/25/audio_946b4c3cf4.mp3" type="audio/mp3">
+</audio>
+
+<div class="hearts" id="hearts"></div>
+
+<!-- Página 1 -->
+<div class="page active" id="page1">
+  <h1>Fernanda… ❤️<br><br>
+  ¿Quieres ser mi Valentín?</h1>
+  
+  <button class="yes" onclick="nextPage(2)">Sí, obvio 😘</button>
+  <button class="no" id="noBtn">No 😅</button>
+</div>
+
+<!-- Página 2 -->
+<div class="page" id="page2">
+  <h1>
+  Escúchame bien…<br><br>
+  Me apresuro porque cuando algo es valioso,  
+  no se deja escapar.<br><br>
+  Tú eres fuerza, ternura, carácter…  
+  y esa mezcla perfecta que me vuelve loco.<br><br>
+  No quiero medias tintas contigo.  
+  Te quiero completa, real, intensa.
+  </h1>
+
+  <button class="yes" onclick="nextPage(3)">Dímelo otra vez 💌</button>
+</div>
+
+<!-- Página 3 -->
+<div class="page" id="page3">
+  <div class="love-text">TE AMO MI AMOR 💞</div>
+  <h1 style="margin-top:25px;">
+  Esta noche paso por ti.<br>
+  20:00 hrs.<br><br>
+  Prepárate… porque voy decidido. 🔥
+  </h1>
+</div>
+
+<script>
+function nextPage(num){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+num).classList.add('active');
+}
+
+const noBtn=document.getElementById('noBtn');
+
+noBtn.addEventListener('mouseover',()=>{
+  const x=Math.random()*window.innerWidth*0.8;
+  const y=Math.random()*window.innerHeight*0.8;
+  noBtn.style.left=x+"px";
+  noBtn.style.top=y+"px";
+});
+
+function createHearts(){
+  const container=document.getElementById('hearts');
+  for(let i=0;i<25;i++){
+    const heart=document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    heart.style.fontSize=(Math.random()*20+15)+"px";
+    container.appendChild(heart);
+  }
+}
+createHearts();
+</script>
+
+</body>
+</html>
