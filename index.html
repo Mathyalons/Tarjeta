@@ -2,85 +2,109 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>San Valentín 💖</title>
+<title>Fernanda ❤️</title>
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Arial', sans-serif;
-  background: linear-gradient(135deg, #ff4e8a, #ff9ecb);
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: white;
+body{
+  margin:0;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ff0844,#ff5e9c,#ff9a9e);
+  background-size:400% 400%;
+  animation:gradientMove 8s ease infinite;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  color:white;
+  text-align:center;
 }
 
-.page {
-  position: absolute;
-  text-align: center;
-  width: 80%;
-  max-width: 600px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.8s ease;
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
 }
 
-.active {
-  opacity: 1;
-  transform: scale(1);
+/* 🔥 ARREGLADO */
+.page{
+  position:absolute;
+  width:90%;
+  max-width:650px;
+  opacity:0;
+  transform:scale(0.7);
+  transition:all 0.8s ease;
+  pointer-events:none;
+  z-index:1;
+  display:none;
 }
 
-h1 {
-  font-size: 2.5em;
+.page.active{
+  opacity:1;
+  transform:scale(1);
+  pointer-events:auto;
+  z-index:10;
+  display:block;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 25px;
-  font-size: 18px;
-  background: white;
-  color: #ff2e6d;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: 0.3s;
+h1{
+  font-size:2em;
 }
 
-button:hover {
-  transform: scale(1.1);
+button{
+  margin:15px;
+  padding:12px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+  font-weight:bold;
+  transition:0.3s;
 }
 
-.love-text {
-  font-size: 3em;
-  font-weight: bold;
-  animation: pulse 1.2s infinite alternate;
+.yes{
+  background:white;
+  color:#ff0844;
 }
 
-@keyframes pulse {
-  from { transform: scale(1); color: #fff; }
-  to { transform: scale(1.2); color: #ffe6f2; }
+.yes:hover{
+  transform:scale(1.2);
 }
 
-.hearts {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+.no{
+  background:black;
+  color:white;
+  position:absolute;
+  top:65%;
+  left:55%;
 }
 
-.heart {
-  position: absolute;
-  font-size: 20px;
-  animation: float 6s linear infinite;
-  opacity: 0.7;
+.love-text{
+  font-size:3em;
+  font-weight:bold;
+  animation:glow 1s infinite alternate;
 }
 
-@keyframes float {
-  from { transform: translateY(100vh) scale(1); }
-  to { transform: translateY(-10vh) scale(1.5); }
+@keyframes glow{
+  from{transform:scale(1); text-shadow:0 0 10px white;}
+  to{transform:scale(1.2); text-shadow:0 0 30px #fff;}
+}
+
+.hearts{
+  position:absolute;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+}
+
+.heart{
+  position:absolute;
+  animation:float 6s linear infinite;
+}
+
+@keyframes float{
+  from{transform:translateY(100vh) rotate(0deg);}
+  to{transform:translateY(-10vh) rotate(360deg);}
 }
 </style>
 </head>
@@ -91,47 +115,85 @@ button:hover {
 
 <!-- Página 1 -->
 <div class="page active" id="page1">
-  <h1>Fernanda… 💖<br>¿Quieres ser mi Valentín?</h1>
-  <button onclick="nextPage(2)">Sí ❤️</button>
+  <h1>Fernanda… ❤️<br><br>
+  ¿Quieres ser mi Valentín?</h1>
+  
+  <button class="yes" onclick="nextPage(2)">Sí, obvio 😘</button>
+  <button class="no" onclick="moverBoton(this)">No 😅</button>
 </div>
 
 <!-- Página 2 -->
 <div class="page" id="page2">
   <h1>
-    Eres lo más increíble que tengo.<br><br>
-    Admiro tu fuerza, tu ternura escondida,<br>
-    tu manera única de ver el mundo.<br><br>
-    Me apresuro porque no quiero perder ni un segundo sin decirte lo mucho que vales…<br><br>
-    Contigo todo es más intenso, más real… más mío.
+  Escúchame bien…<br><br>
+  Me apresuro porque cuando algo es valioso,
+  no se deja escapar.<br><br>
+  Tú eres fuerza, ternura, carácter…
+  y esa mezcla perfecta que me vuelve loco.<br><br>
+  No quiero medias tintas contigo.
+  Te quiero completa, real, intensa.
   </h1>
-  <button onclick="nextPage(3)">Sigue… 💌</button>
+
+  <button class="yes" onclick="nextPage(3)">Dímelo otra vez 💌</button>
 </div>
 
 <!-- Página 3 -->
 <div class="page" id="page3">
   <div class="love-text">TE AMO MI AMOR 💞</div>
-  <h1 style="margin-top:20px;">
-    Esta noche te paso a buscar<br>
-    a tu casa — 20:00 hrs ✨
+  <h1 style="margin-top:25px;">
+  Esta noche paso por ti.<br>
+  20:00 hrs.<br><br>
+  Prepárate… porque voy decidido 🔥<br><br>
+  Y no pienso soltarte nunca. 💍
   </h1>
 </div>
 
 <script>
-function nextPage(pageNumber) {
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.getElementById('page' + pageNumber).classList.add('active');
+function nextPage(num){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+  });
+
+  const target = document.getElementById('page'+num);
+  if(target){
+    target.classList.add('active');
+  }
+
+  if(num===3){
+    explosionCorazones();
+  }
 }
 
-function createHearts() {
-  const container = document.getElementById('hearts');
-  for (let i = 0; i < 20; i++) {
-    const heart = document.createElement('div');
+function moverBoton(btn){
+  const x=Math.random()*(window.innerWidth-120);
+  const y=Math.random()*(window.innerHeight-60);
+  btn.style.left=x+"px";
+  btn.style.top=y+"px";
+}
+
+function createHearts(){
+  const container=document.getElementById('hearts');
+  for(let i=0;i<40;i++){
+    const heart=document.createElement('div');
     heart.classList.add('heart');
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
-    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(Math.random()*3+3)+"s";
+    heart.style.fontSize=(Math.random()*25+15)+"px";
     container.appendChild(heart);
+  }
+}
+
+function explosionCorazones(){
+  for(let i=0;i<30;i++){
+    const heart=document.createElement('div');
+    heart.innerHTML="💘";
+    heart.style.position="absolute";
+    heart.style.left="50%";
+    heart.style.top="50%";
+    heart.style.fontSize="30px";
+    heart.style.transform=`translate(${Math.random()*400-200}px, ${Math.random()*400-200}px)`;
+    document.body.appendChild(heart);
   }
 }
 
